@@ -6,12 +6,12 @@ const Categories = ()=> {
   const { categories, todos } = useSelector(state => state);
   const dispatch = useDispatch();
   return (
-    <ul>
+    <div className="categoriesContainer">
       {
         categories.map( category => {
           const filtered = todos.filter(todo => todo.categoryId === category.id);
           return (
-            <li key={ category.id }>
+            <div singleCategoryContainer key={ category.id }>
               { category.name }
               ({ filtered.length })
               <button
@@ -22,11 +22,11 @@ const Categories = ()=> {
               >
                 x
               </button>
-            </li>
+            </div>
           );
         })
       }
-    </ul>
+    </div>
   );
 };
 

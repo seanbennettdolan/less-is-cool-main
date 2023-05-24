@@ -37,10 +37,10 @@ function App() {
     return (
         <div>
             <nav>
-                <h1><Link to='/'>Acme Todos ({todos.length})!!</Link></h1>
-                <Link to='/create'>Create A Todo</Link>
+                <h1><Link to='/'>Acme Todos ({todos.length})</Link></h1>
+                <Link className="navLink1" to='/create'>Create A Todo</Link>
                 {' '}
-                <Link to='/categories/create'>Create A Category</Link>
+                <Link className="navLink2" to='/categories/create'>Create A Category</Link>
             </nav>
             <Routes>
                 <Route path='/' element={<Search/>}/>
@@ -54,7 +54,7 @@ function App() {
                 <Route path='/create' element={<TodoCreate/>}/>
                 <Route path='/categories/create' element={<CategoryCreate/>}/>
             </Routes>
-            <Categories/>
+            {/* <Categories/> */}
         </div>
     );
 }

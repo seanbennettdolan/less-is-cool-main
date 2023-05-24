@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateTodo, destroyTodo } from './store';
 import { Link, useParams } from 'react-router-dom';
+import Categories from './Categories';
 
 const Todos = ()=> {
   const { categories, todos } = useSelector(state => state);
@@ -10,23 +11,26 @@ const Todos = ()=> {
   const filtered = todos.filter(todo => !term || todo.name.includes(term));
 
   return (
-    <div>
+    <div className="todosContainer">
       {
         filtered.length !== todos.length ? (
           <h2>You are filtering { filtered.length } out of { todos.length }</h2>
         ): null
       }
-      <ul>
+      <div>
         {
           filtered.map( todo => {
             const category = categories.find(category => category.id === todo.categoryId);
             return (
-              <li key={ todo.id }>
-                <Link to={`/${todo.id}`}>
+              <div className="singleTodoContainer" key={ todo.id }>
+                <Link className="todoLinks" to={`/${todo.id}`}>
                   { todo.name }
+                  <br />
                 </Link>
-                ({ category ? category.name : 'none'})
+                Category:
+                { category ? category.name : 'none'}
                 <button
+                className="deleteButton"
                   onClick= {
                     ()=> {
                       dispatch(destroyTodo(todo));
@@ -35,7 +39,7 @@ const Todos = ()=> {
                 >
                 x
                 </button>
-                <select
+                <select className="dropDownMenu"
                   value={ todo.categoryId }
                   onChange = {
                     ev => {
@@ -44,6 +48,7 @@ const Todos = ()=> {
                     }
                   }
                 >
+
                   {
                     categories.map( category => {
                       return (
@@ -52,11 +57,12 @@ const Todos = ()=> {
                     })
                   }
                 </select>
-              </li>
+              </div>
             );
           })
         }
-      </ul>
+      </div>
+      <Categories />
     </div>
   )
 };

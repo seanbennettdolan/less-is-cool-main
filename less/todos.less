@@ -1,15 +1,33 @@
-ul{
-  list-style: none;
+.todosContainer{
+  padding-top: 45px;
+display: flex;
+justify-content: space-evenly;
 }
 
-li{
-  background-color: @sideColor;
-  color: white;
+.singleTodoContainer{
+  border-radius: 25px;
+  background-color: @postBackground;
+  color: @pinkColor;
   .grow(200px);
   min-width: 100px;
   max-width: 500px;
-  .flexer(row);
   .padd(36px);
   margin: 8px;
 
+}
+
+.todoLinks {
+  text-decoration: none;
+  color: @textColor;
+
+}
+
+.dropDownMenu {
+  background-color: @buttonColor;
+  border-radius: 10px;
+}
+
+button {
+  background-color: @buttonColor;
+  border-radius: 10px;
 }
